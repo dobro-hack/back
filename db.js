@@ -25,4 +25,4 @@ const pool2 = mysql.createPool({
   },
 });
 
-module.exports = pool;
+module.exports = pool2;
