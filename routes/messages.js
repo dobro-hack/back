@@ -57,4 +57,27 @@ router.get("/messages-sql", async (req, res) => {
   }
 });
 
+router.patch("/messages-sql/:id", async (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body;
+
+  if (!["pending", "delivered", "declined"].includes(status)) {
+    return res.status(400).json({ error: "Invalid status value" });
+  }
+
+  const updateQuery = `
+    UPDATE message
+    SET status = ?
+    WHERE id = ?
+  `;
+
+  try {
+    await pool.query(updateQuery, [status, id]);
+    res.status(200).json({ message: "Status updated successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
 module.exports = router;

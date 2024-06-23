@@ -28,6 +28,9 @@ router.get("/requests-sql", async (req, res) => {
       rt.duration AS route_duration,
       rt.height AS route_height,
       rt.difficulty AS route_difficulty,
+      rt.load AS route_load,
+      rt.max_load AS route_max_load,
+      rt.photo AS route_photo,
       pk.name AS park_name,
       pk.description AS park_description,
       CASE
