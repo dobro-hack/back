@@ -106,7 +106,7 @@ router.post("/routes-sql", async (req, res) => {
       average_time,
       group_size,
       days_on_route,
-      gpx_data,
+      gpx_data
     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `;
   const updateQuery = `
@@ -126,7 +126,7 @@ router.post("/routes-sql", async (req, res) => {
       average_time = ?,
       group_size = ?,
       days_on_route = ?,
-      gpx_data = ?,
+      gpx_data = ?
     WHERE id = ?
   `;
 
